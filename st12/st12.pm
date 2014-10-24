@@ -2,6 +2,7 @@ package ST12;
 use strict;
 use Encode qw(encode decode);
 
+my $pathfile='st12\Datafiles\654';
 my @DATABASE =();
 my @MODULES =(	
 	\&add,
@@ -143,8 +144,9 @@ sub delete{
 
 sub save{#ничего лучше в голову не пришло для сохранения/загрузки
 	system("cls");
-	print "Файл: ";
+	print "Файл(0 для использования ст.ф.): ";
 	chomp(my $str = <STDIN>);
+	if(!$str){$str=$pathfile};
 	my %g;
 	if(!dbmopen(%g, $str, 0644)){
 		print "$!";
@@ -163,8 +165,9 @@ sub save{#ничего лучше в голову не пришло для сохранения/загрузки
 
 sub load{
 	system("cls");
-	print "Файл: ";
+	print "Файл(0 для использования ст.ф.): ";
 	chomp(my $name = <STDIN>);
+	if(!$name){$name=$pathfile};
 	my %g;
 	if(!dbmopen(%g, $name, 0)){
 		print "\nНе могу открыть $name!";
