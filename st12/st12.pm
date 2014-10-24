@@ -1,3 +1,4 @@
+package ST12;
 use strict;
 use Encode qw(encode decode);
 
@@ -41,16 +42,17 @@ sub menu{
 	my $ch = <STDIN>;
 	return ($ch-1);
 }
-
-while(1){
-	my $ch = menu();
-	if($ch>=0&&defined $MODULES[$ch]){
-		$MODULES[$ch]->();
-	}
-	else{
-		system("cls");
-		print "Внимательнее!";
-		next;
+sub st12{
+	while(1){
+		my $ch = menu();
+		if($ch>=0&&defined $MODULES[$ch]){
+			$MODULES[$ch]->();
+		}
+		else{
+			system("cls");
+			print "Внимательнее!";
+			next;
+		}
 	}
 }
 
